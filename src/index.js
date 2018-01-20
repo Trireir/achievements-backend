@@ -10,12 +10,12 @@ const Axios = axios.create({
 
 const app = express()
 
-app.get('/api/getUserId/:username', (req, res) => {
-  if(!req.params.username) {
+app.get('/api/getUserId?:username', (req, res) => {
+  if(!req.query.username) {
     return res.status(200).json({});
   }
 
-  Axios.get(pathnames.getUserId(req.params.username))
+  Axios.get(pathnames.getUserId(req.query.username))
   .then((result) => {
     if(result.data.response.success !== 1) {
       return res.status(404).json(result.data.response);
