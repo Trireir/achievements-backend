@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/api/getUserId', function (req, res) {
-  res.send('Hello World!');
+  res.status(200).json({hello: 'WORLD'});
 });
 
 app.listen(3333, function () {
