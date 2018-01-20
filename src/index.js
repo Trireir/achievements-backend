@@ -45,12 +45,25 @@ app.get('/api/getFriendsIds', (req, res) => {
     res.status(200).json(result.data.friendslist);
   })
   .catch((err) => {
-    console.log('Error!!!')
     res.status(404).json({
       message: 'Friends list not available. Maybe the id doesn\'t exist or the profile is private'
     })
   })
 });
+
+app.get('/api/getUserGames', (req, res) => {
+  if(!req.query.userid) {
+    return res.status(200).json({});
+  }
+
+  Axios.get(pathnames.getUserGames(req.query.userid))
+  .then((result) => {
+    if(result.data.response.success !== 1) {
+      return res.status(404).json(result.data.response)
+    }
+    res.status(200).json(result.data.response)
+  })
+})
 
 app.listen(3333, function () {
   console.log('Listening on 3333 port');
