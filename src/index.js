@@ -5,7 +5,10 @@ import axios from 'axios';
 import pathnames from './pathnames';
 
 const Axios = axios.create({
-  baseURL: 'http://api.steampowered.com/'
+  baseURL: 'http://api.steampowered.com/',
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
 });
 
 const app = express()
