@@ -14,7 +14,7 @@ app.get('/api/getUserId/:username', (req, res) => {
   if(!req.params.username) {
     return res.status(200).json({});
   }
-  console.log('asdf', pathnames.getUserId(req.params.username))
+
   Axios.get(pathnames.getUserId(req.params.username))
   .then((result) => {
     if(result.data.response.success !== 1) {
