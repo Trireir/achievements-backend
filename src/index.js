@@ -58,10 +58,12 @@ app.get('/api/getUserGames', (req, res) => {
 
   Axios.get(pathnames.getUserGames(req.query.userid))
   .then((result) => {
-    if(result.data.response.success !== 1) {
-      return res.status(404).json(result.data.response)
-    }
     res.status(200).json(result.data.response)
+  })
+  .catch((err) => {
+    res.status(404).json({
+      message: 'Friends list not available. Maybe the id doesn\'t exist or the profile is private'
+    })
   })
 })
 
