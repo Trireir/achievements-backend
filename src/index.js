@@ -1,7 +1,11 @@
-var express = require('express');
-var app = express();
 
-app.get('/api/getUserId', function (req, res) {
+require('babel-core/register');
+import express from 'express';
+
+const app = express()
+
+
+app.get('/api/getUserId/:username', (req, res) => {
   res.status(200).json({hello: 'WORLD'});
 });
 
