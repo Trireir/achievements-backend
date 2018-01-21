@@ -1,6 +1,7 @@
 
 import express from 'express';
 import axios from 'axios';
+import cors from 'cors';
 
 import pathnames from './pathnames';
 
@@ -12,6 +13,7 @@ const Axios = axios.create({
 });
 
 const app = express()
+app.use(cors({ origin: '*' }))
 
 app.get('/api/getUserId', (req, res) => {
   if(!req.query.username) {
