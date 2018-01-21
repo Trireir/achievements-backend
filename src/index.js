@@ -70,6 +70,22 @@ app.get('/api/getUserGames', (req, res) => {
   })
 })
 
+app.get('/api/getGameInfo', (req, res) => {
+  if(!req.query.gameId) {
+    return res.status(200).json({});
+  }
+
+  Axios.get(pathnames.getGameInfo(req.query.gameId))
+  .then((result) => {
+    res.status(200).json(result.data.game)
+  })
+  .catch((err) => {
+    res.status(404).json({
+      message: 'Game doesn\'t exist'
+    })
+  })
+});
+
 app.listen(3333, function () {
   console.log('Listening on 3333 port');
 });
