@@ -88,6 +88,6 @@ app.get('/api/getGameInfo', (req, res) => {
   })
 });
 
-app.listen(3333, function () {
-  console.log('Listening on 3333 port');
+app.listen(process.env.PORT || 3333, function () {
+  console.log(`Listening on ${process.env.PORT || 3333} port`);
 });
