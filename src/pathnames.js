@@ -7,7 +7,9 @@ const pathnames = {
   ),
   getFriendsIds: (userid) => (`/ISteamUser/GetFriendList/v0001/?key=${STEAM_KEY}&steamid=${userid}&relationship=friend`),
   getUserGames: (userid) => (`/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_KEY}&steamid=${userid}&format=json&include_appinfo=1`),
-  getGameInfo: (gameid) => (`/ISteamUserStats/GetSchemaForGame/v2/?key=${STEAM_KEY}&appid=${gameid}`)
+  getGameInfo: (gameid) => (`/ISteamUserStats/GetSchemaForGame/v2/?key=${STEAM_KEY}&appid=${gameid}`),
+  getGameAchievements: (appid) => (`/ISteamUserStats/GetSchemaForGame/v2/?key=${STEAM_KEY}&appid=${appid}`),
+  getUserAchievements: (appid, userid) => (`/ISteamUserStats/GetPlayerAchievements/v0001/?key=${STEAM_KEY}&appid=${appid}&steamid=${userid}`)
 }
 
 export default pathnames;
