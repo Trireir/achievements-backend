@@ -124,8 +124,7 @@ app.get('/api/getGameAchievements', (req, res) => {
   })
   .catch((err) => {
     res.status(400).json({
-      message: 'There is no achievements available for this game',
-      err: err,
+      message: 'There is no achievements available for this game'
     })
   });
 });
