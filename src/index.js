@@ -120,10 +120,14 @@ app.get('/api/getGameAchievements', (req, res) => {
     friendAchievements.forEach((fa) => {
       achievements[fa.apiname].friendAchieved = fa.achieved;
     });
-    res.status(200).json(achievements)
+    res.status(200).json({
+      appid: req.query.gameid,
+      achievements
+    })
   })
   .catch((err) => {
-    res.status(400).json({
+    res.status(200).json({
+      error: 1,
       message: 'There is no achievements available for this game'
     })
   });
